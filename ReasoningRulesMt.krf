@@ -1,0 +1,22 @@
+;;;; -*-  Mode: LISP; Syntax: Common-Lisp; Base: 10                          -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(in-microtheory ReasoningRulesMt)
+(isa ReasoningRulesMt Microtheory)
+(comment ReasoningRulesMt
+  "ReasoningRulesMt holds all the rules to get from user prefs to activity recommendations.")
+
+;;; see LogicalConnective in KB
+
+;;; HORN CLAUSES
+
+
+
+
+
+;;;(<== (thingToDo ?activity) 
+;;;	(and (wantsIndoors MyUser) (indoors ?activity))
+;;;	(and (wantsOnCampus MyUser) (onCampus ?activity)))
+
+
+(<== (thingToDo ?activity) 
+	(indoors ?activity))

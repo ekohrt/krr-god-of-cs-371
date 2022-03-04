@@ -1,0 +1,35 @@
+;;;; -*-  Mode: LISP; Syntax: Common-Lisp; Base: 10                          -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(in-microtheory UserInputsMt)
+(isa UserInputsMt Microtheory)
+(comment UserInputsMt
+  "UserInputsMt is a microtheory representing a hypothetical user's preferences about what 
+  sort of things they want to do.")
+
+
+
+
+;;; FACTS, PREDICATES, HORN CLAUSES, ETC GO BELOW:
+(isa User Collection)
+(comment User
+  "User representss a hypothetical user with preferences about activities to do.")
+
+(isa wantsIndoors Predicate)
+(arity wantsIndoors 1)
+(arg1Isa wantsIndoors User)
+(comment wantsIndoors
+  "Wants Indoors")
+
+(isa wantsOnCampus Predicate)
+(arity wantsOnCampus 1)
+(arg1Isa wantsOnCampus User)
+(comment wantsOnCampus
+  "Wants OnCampus")
+
+
+
+
+;;; Preferences of a specific user:
+(isa MyUser User)
+(wantsIndoors MyUser)
+(wantsOnCampus MyUser)

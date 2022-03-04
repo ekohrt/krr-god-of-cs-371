@@ -1,0 +1,91 @@
+;;;; -*-  Mode: LISP; Syntax: Common-Lisp; Base: 10                          -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(in-microtheory ActivitiesMt)
+(isa ActivitiesMt Microtheory)
+(comment ActivitiesMt
+  "ActivitiesMt is a microtheory for information about things to do in Evanston, Illinois.")
+(genlMt ActivitiesMt ReasoningRulesMt) ;;;not sure if necessary
+(genlMt UserInputsMt ReasoningRulesMt) ;;;not sure if necessary
+
+
+
+
+
+;;; PREDICATES FOR ACTIVITIES
+
+(isa Activity Collection) 
+(comment Activity
+	"Activity: a thing to do in Evanston.")
+
+(isa onCampus Predicate)
+(arity onCampus 1)
+(arg1Isa onCampus Activity)
+(comment onCampus
+	"On Campus: the statement (onCampus Starbucks) means that Starbucks is on campus")
+
+(isa offCampus Predicate)
+(arity offCampus 1)
+(arg1Isa offCampus Activity)
+(comment offCampus
+	"Off Campus: the statement (offCampus BobsPizza) means that BobsPizza is off campus")
+
+(isa indoors Predicate)
+(arity indoors 1)
+(arg1Isa indoors Activity)
+(comment indoors
+	"Indoors: the statement (indoors Starbucks) means that Starbucks is indoors")
+
+(isa outdoors Predicate)
+(arity outdoors 1)
+(arg1Isa outdoors Activity)
+(comment outdoors
+	"Outdoors: the statement (outdoors WalkLakefill) means that the activity WalkLakefill is outdoors")
+
+
+
+
+
+;;; SPECIFIC ACTIVITIES
+
+(isa BobsPizza Activity)
+(indoors BobsPizza)
+(offCampus BobsPizza)
+(comment BobsPizza
+	"Bob's Pizza")
+
+(isa Starbucks Activity)
+(indoors Starbucks)
+(onCampus Starbucks)
+(comment Starbucks
+	"Starbucks on campus")
+
+(isa WalkDawesPark Activity)
+(outdoors WalkDawesPark)
+(offCampus WalkDawesPark)
+(comment WalkDawesPark
+	"Take a walk in Dawes Park")
+
+(isa WalkLakefill Activity)
+(outdoors WalkLakefill)
+(offCampus WalkLakefill)
+(comment WalkDawesPark
+	"Take a walk at the NU Lakefill")
+
+
+
+
+
+;;; ------------------------------------
+;;; QUERY
+;;; ------------------------------------
+(isa thingToDo Predicate)
+(arity thingToDo 1)
+(arg1Isa thingToDo Activity)
+(comment thingToDo
+	"The statement (thingsToDo ?outputActivity) means that some activity is a good activity for the user based on their preferences.
+	Used as a query for finding all things a user wants to do given their inputs.")
+
+
+
+
