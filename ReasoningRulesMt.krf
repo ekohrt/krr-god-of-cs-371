@@ -20,19 +20,114 @@
 
 
 
+;;; greaterThan, lessThan, lessThanOrEqualTo, greaterThanOrEqualTo
 
-(isa MatchesIndoorOutdoor Predicate)
+
+
+(isa matchesIndoorOutdoor Predicate)
 (arity MatchesIndoorOutdoor 1)
+(arg1Isa thingToDo Activity)
 
-(<== (MatchesIndoorOutdoor ?a)
-	(or (and (wantsOutdoors MyUser) (outdoors ?a)) 
-		(and (wantsIndoors MyUser) (indoors ?a))
-	) 
-)
+;;;(<== (matchesIndoorOutdoor ?a)
+;;;	(or (and (wantsOutdoors MyUser) (outdoors ?a))
+;;;	) 
+;;;)
 
 
 
 (<== (thingToDo ?a) 
+	(activityIsOpen ?a) ;;; Might not work?
+	;;;(correctLocation a?)
+
 	;;;(and (indoors ?a) (onCampus ?a)) )
-	(MatchesIndoorOutdoor ?a)
+	;;;(matchesIndoorOutdoor ?a)
+;;;	(or (onCampus ?a) (outdoors ?a))
+)
+
+
+;;; THIS WORKS: DO NOT TOUCH -------------------
+(isa activityIsOpen Predicate)
+(arity activityIsOpen 1)
+(arg1Isa activityIsOpen Activity)
+(comment activityIsOpen
+	"Activity Is Open: true if activity is open based on current time")
+
+;;; Returns all activities that are open, given userCurrentTime
+(<== (activityIsOpen ?a)
+	(userCurrentTime MyUser ?currentTime)
+	(closeTime ?a ?closeTime)
+	(openTime ?a ?openTime)
+	(lessThanOrEqualTo ?currentTime ?closeTime)
+	(greaterThanOrEqualTo ?currentTime ?openTime)
+)
+;;; --------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+;;;----------------------------------------------
+;;;
+;;; UNDER CONSTRUCTION vvv
+;;;
+
+(isa correctLocation Predicate)
+(arity correctLocation 1)
+(arg1Isa correctLocation Activity)
+(comment correctLocation
+	"Correct Location: True if activity is in correct location (On/Off Campus")
+
+;;; Check if activity is in correct location
+(<== (correctLocation a?)
+
+	(and (wantsOnCampus myUser) (onCampus ?a))
+
+	(offCampus ?a)
+	;;;maps from wantsOnCampus --> activities that are onCampus
+	;;;and from wantsOffCampus --> activities that are offCampus
+	
+	;;; we want all activities where wantsOnCampus == onCampus
+	;;; and all activities where wantsOffCampus == offCampus
+
+	;;; return activities onCampus if user 
+	;;either both on or both off: 
+
+	;;either wantsOnCampus AND onCampus
+	;;or wantsOffCampus AND offCampus
+
+
+)
+
+
+
+
+;;;-----------------------------------------------------------
+
+(isa matchUserInputs Predicate)
+(arity matchUserInputs 5)
+(arg1Isa )
+;;;(matchUserInputs outdoors onCampus 1300 ?a)
+
+
+
+
+(isa thingToDo Predicate)
+(arity thingToDo 1)
+(arg1Isa thingToDo Activity)
+(comment thingToDo
+	"The statement (thingsToDo ?outputActivity) means that some activity is a good activity for the user based on their preferences.
+	Used as a query for finding all things a user wants to do given their inputs.")
+
+
+(<== (thingToDo ?a) 
+	(User ?OnOrOff ?Time ?inOrOut) ;;;this needs to be predicate
+	(?onOrOff ?act)
+	(?inOrOut ?act)
 )

@@ -26,11 +26,11 @@
 (comment onCampus
 	"On Campus: the statement (onCampus Starbucks) means that Starbucks is on campus")
 
-(isa offCampus Predicate)
-(arity offCampus 1)
-(arg1Isa offCampus Activity)
-(comment offCampus
-	"Off Campus: the statement (offCampus BobsPizza) means that BobsPizza is off campus")
+;;;(isa offCampus Predicate)
+;;;(arity offCampus 1)
+;;;(arg1Isa offCampus Activity)
+;;;(comment offCampus
+;;;	"Off Campus: the statement (offCampus BobsPizza) means that BobsPizza is off campus")
 
 (isa indoors Predicate)
 (arity indoors 1)
@@ -44,6 +44,22 @@
 (comment outdoors
 	"Outdoors: the statement (outdoors WalkLakefill) means that the activity WalkLakefill is outdoors")
 
+(isa openTime Predicate)
+(arity openTime 2)
+(arg1Isa openTime Activity)
+(arg2Isa openTime ScalarInterval)
+(comment openTime
+	"Open Time: the statement (openTime Starbucks 1300) means that Starbucks opens at 1300 hours (aka 1:00 pm)")
+
+(isa closeTime Predicate)
+(arity closeTime 2)
+(arg1Isa closeTime Activity)
+(arg2Isa closeTime ScalarInterval)
+(comment closeTime
+	"Close Time: the statement (closeTime Starbucks 2200) means that Starbucks closes at 2200 hours (aka 10:00 pm)")
+
+
+
 
 
 
@@ -51,28 +67,42 @@
 ;;; SPECIFIC ACTIVITIES
 
 (isa BobsPizza Activity)
-(indoors BobsPizza)
-(offCampus BobsPizza)
 (comment BobsPizza
 	"Bob's Pizza")
+(indoors BobsPizza)
+;;;(offCampus BobsPizza)
+(openTime BobsPizza 1600) ;;; 4pm
+(closeTime BobsPizza 2400) ;;; 12am
+
+
 
 (isa Starbucks Activity)
-(indoors Starbucks)
-(onCampus Starbucks)
 (comment Starbucks
 	"Starbucks on campus")
+(indoors Starbucks)
+(onCampus Starbucks)
+(openTime Starbucks 830) ;;; 8:30am
+(closeTime Starbucks 2200) ;;; 10:00pm
+
+
 
 (isa WalkDawesPark Activity)
-(outdoors WalkDawesPark)
-(offCampus WalkDawesPark)
 (comment WalkDawesPark
 	"Take a walk in Dawes Park")
+(outdoors WalkDawesPark)
+;;;(offCampus WalkDawesPark)
+(openTime WalkDawesPark 600) ;;; 6am
+(closeTime WalkDawesPark 2200) ;;; 10pm
+
+
 
 (isa WalkLakefill Activity)
-(outdoors WalkLakefill)
-(offCampus WalkLakefill)
-(comment WalkDawesPark
+(comment WalkLakefill
 	"Take a walk at the NU Lakefill")
+(outdoors WalkLakefill)
+(onCampus WalkLakefill)
+(openTime WalkLakefill 0) ;;; 12am
+(closeTime WalkLakefill 2400) ;;; 12am
 
 
 

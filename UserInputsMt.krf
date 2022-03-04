@@ -38,6 +38,13 @@
 (comment wantsOffCampus
   "Wants OffCampus")
 
+(isa userCurrentTime Predicate)
+(arity userCurrentTime 2)
+(arg1Isa userCurrentTime User)
+(arg2Isa userCurrentTime ScalarInterval)
+(comment userCurrentTime
+  "Current Time of Day")
+
 
 
 
@@ -46,3 +53,5 @@
 (isa MyUser User)
 (wantsOutdoors MyUser)
 (wantsOnCampus MyUser)
+
+(userCurrentTime MyUser 2300)
