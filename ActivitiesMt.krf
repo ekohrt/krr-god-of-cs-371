@@ -5,6 +5,8 @@
 (isa ActivitiesMt Microtheory)
 (comment ActivitiesMt
   "ActivitiesMt is a microtheory for information about things to do in Evanston, Illinois.")
+;;;(genlMt ReasoningRulesMt ActivitiesMt) ;;;not sure if necessary
+;;;(genlMt ReasoningRulesMt UserInputsMt) ;;;not sure if necessary
 (genlMt ActivitiesMt ReasoningRulesMt) ;;;not sure if necessary
 (genlMt UserInputsMt ReasoningRulesMt) ;;;not sure if necessary
 

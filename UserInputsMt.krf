@@ -20,16 +20,29 @@
 (comment wantsIndoors
   "Wants Indoors")
 
+(isa wantsOutdoors Predicate)
+(arity wantsOutdoors 1)
+(arg1Isa wantsOutdoors User)
+(comment wantsOutdoors
+  "Wants Outdoors")
+
 (isa wantsOnCampus Predicate)
 (arity wantsOnCampus 1)
 (arg1Isa wantsOnCampus User)
 (comment wantsOnCampus
   "Wants OnCampus")
 
+(isa wantsOffCampus Predicate)
+(arity wantsOffCampus 1)
+(arg1Isa wantsOffCampus User)
+(comment wantsOffCampus
+  "Wants OffCampus")
+
 
 
 
 ;;; Preferences of a specific user:
+;;; Type user's inputs here
 (isa MyUser User)
-(wantsIndoors MyUser)
+(wantsOutdoors MyUser)
 (wantsOnCampus MyUser)

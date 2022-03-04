@@ -18,5 +18,21 @@
 ;;;	(and (wantsOnCampus MyUser) (onCampus ?activity)))
 
 
-(<== (thingToDo ?activity) 
-	(indoors ?activity))
+
+
+
+(isa MatchesIndoorOutdoor Predicate)
+(arity MatchesIndoorOutdoor 1)
+
+(<== (MatchesIndoorOutdoor ?a)
+	(or (and (wantsOutdoors MyUser) (outdoors ?a)) 
+		(and (wantsIndoors MyUser) (indoors ?a))
+	) 
+)
+
+
+
+(<== (thingToDo ?a) 
+	;;;(and (indoors ?a) (onCampus ?a)) )
+	(MatchesIndoorOutdoor ?a)
+)
