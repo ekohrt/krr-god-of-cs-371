@@ -59,6 +59,6 @@
 ;;; Preferences of a specific user.
 (isa MyUser User)
 ;;; Type user's inputs here:
-;;;(wantsIndoors MyUser)
-;;;(wantsOffCampus MyUser)
-;;;(userCurrentTime MyUser 1200)
+(wantsIndoors MyUser)
+(wantsOffCampus MyUser)
+(userCurrentTime MyUser 1200)
