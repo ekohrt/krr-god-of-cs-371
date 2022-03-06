@@ -92,6 +92,17 @@
 (comment servesCaffeine
 	"Serves Caffeine")
 
+(isa servesAlcohol Predicate)
+(arity servesAlcohol 1)
+(arg1Isa servesAlcohol EvanstonActivity)
+(comment servesAlcohol
+	"Serves Alcohol")
+
+(isa shoppingPlace Predicate)
+(arity shoppingPlace 1)
+(arg1Isa shoppingPlace EvanstonActivity)
+(comment shoppingPlace
+	"User can buy things here i.e. groceries, goods")
 
 
 
@@ -108,6 +119,8 @@
 (offCampus BobsPizza)
 (openTime BobsPizza 1600) ;;; 4pm
 (closeTime BobsPizza 2400) ;;; 12am
+(servesFood BobsPizza)
+(servesAlcohol BobsPizza)
 
 
 
@@ -118,7 +131,9 @@
 (onCampus Starbucks)
 (openTime Starbucks 830) ;;; 8:30am
 (closeTime Starbucks 2200) ;;; 10:00pm
-
+(studySpot Starbucks)
+(servesFood Starbucks)
+(servesCaffeine Starbucks)
 
 
 (isa WalkDawesPark EvanstonActivity)
@@ -128,6 +143,7 @@
 (offCampus WalkDawesPark)
 (openTime WalkDawesPark 600) ;;; 6am
 (closeTime WalkDawesPark 2200) ;;; 10pm
+(involvesExercise WalkDawesPark)
 
 
 
@@ -138,7 +154,118 @@
 (onCampus WalkLakefill)
 (openTime WalkLakefill 0) ;;; 12am
 (closeTime WalkLakefill 2400) ;;; 12am
+(involvesExercise WalkLakefill)
 
+(isa JoyYee EvanstonActivity)
+(comment JoyYee
+	"Eat at JoyYees")
+(indoors JoyYee)
+(offCampus JoyYee)
+(openTime JoyYee 1130)
+(closeTime JoyYee 2115)
+(servesFood JoyYee)
+
+(isa Koi EvanstonActivity)
+(comment Koi
+	"Get sushi at Koi")
+(indoors Koi)
+(offCampus Koi)
+(openTime Koi 1200)
+(closeTime Koi 2100)
+(servesFood Koi)
+
+(isa ColdstoneIceCream EvanstonActivity)
+(comment ColdstoneIceCream
+	"Get ice cream at ColdstoneIceCream")
+(indoors ColdstoneIceCream)
+(offCampus ColdstoneIceCream)
+(openTime ColdstoneIceCream 1100)
+(closeTime ColdstoneIceCream 2300)
+(servesFood ColdstoneIceCream)
+
+(isa CoffeeLab EvanstonActivity)
+(comment CoffeeLab
+	"Go to CoffeeLab")
+(indoors CoffeeLab)
+(offCampus CoffeeLab)
+(openTime CoffeeLab 830)
+(closeTime CoffeeLab 1700)
+(servesCaffeine CoffeeLab)
+(studySpot CoffeeLab)
+
+(isa Tealicious EvanstonActivity)
+(comment Tealicious
+	"Get boba from TEAlicious Bubble")
+(indoors Tealicious)
+(offCampus Tealicious)
+(openTime Tealicious 1200)
+(closeTime Tealicious 2100)
+(servesFood Tealicious)
+(servesCaffeine Tealicious)
+(studySpot Tealicious)
+
+(isa SketchbookBrewing EvanstonActivity)
+(comment SketchbookBrewing
+	"Get drinks at Sketchbook")
+(indoors SketchbookBrewing)
+(offCampus SketchbookBrewing)
+(openTime SketchbookBrewing 1200)
+(closeTime SketchbookBrewing 2200)
+(servesAlcohol SketchbookBrewing)
+
+(isa Target EvanstonActivity)
+(comment Target
+	"Get groceries at Target")
+(indoors Target)
+(offCampus Target)
+(openTime Target 800)
+(closeTime Target 2200)
+(shoppingPlace Target)
+
+(isa SavilleFlowers EvanstonActivity)
+(comment SavilleFlowers
+	"Buy flowers at Saville Flowers")
+(indoors SavilleFlowers)
+(offCampus SavilleFlowers)
+(openTime SavilleFlowers 1000)
+(closeTime SavilleFlowers 1600)
+(shoppingPlace SavilleFlowers)
+
+(isa BookendsBeginnings EvanstonActivity)
+(comment BookendsBeginnings
+	"Buy a book at Bookends Beginnings")
+(indoors BookendsBeginnings)
+(offCampus BookendsBeginnings)
+(openTime BookendsBeginnings 1100)
+(closeTime BookendsBeginnings 1800)
+(shoppingPlace BookendsBeginnings)
+
+(isa Spac EvanstonActivity)
+(comment Spac
+	"Go workout at SPAC aka Henry Crown Sports Pavillion")
+(indoors Spac)
+(onCampus Spac)
+(openTime Spac 800)
+(closeTime Spac 2100)
+(involvesExercise Spac)
+
+(isa HomeTakeout EvanstonActivity)
+(comment HomeTakeout
+	"Stay home and get takeout!")
+(indoors HomeTakeout)
+(offCampus HomeTakeout)
+(openTime HomeTakeout 0)
+(closeTime HomeTakeout 2400)
+(servesFood HomeTakeout)
+
+(isa MuddLibrary EvanstonActivity)
+(comment MuddLibrary
+	"Go to Mudd Library and study")
+(indoors MuddLibrary)
+(onCampus MuddLibrary)
+(openTime MuddLibrary 0)
+(closeTime MuddLibrary 2400)
+(studySpot MuddLibrary)
 
 ;;; --------------------------
 ;;; TODO: add more activities

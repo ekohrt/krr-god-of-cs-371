@@ -54,14 +54,30 @@
 
 ;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctIndoorOutdoor ?a)
-				(wantsIndoor MyUser)
+				(wantsIndoors MyUser)
 				(indoors ?a))
 
 (<== (correctIndoorOutdoor ?a)
-			  (wantsOutdoor MyUser)
-			  (outdoors ?a))
+				(wantsOutdoors MyUser)
+				(outdoors ?a))
 ;;; ---------------------------------------------------------------------------------
+;; Addresses servesFood
 
+(isa correctFoodPreference Predicate)
+(arity correctFoodPreference 1)
+(arg1Isa correctFoodPreference EvanstonActivity)
+(comment correctFoodPreference
+	"Correct Food Preference: if user specifies (wantsFood myUser) then return only activities that have (servesFood ?a), otherwise if user does not specify, then return all activities including ones that serve food")
+
+;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
+(<== (correctFoodPreference ?a)
+				(wantsFood MyUser)
+				(servesFood ?a))
+
+(<== (correctFoodPreference ?a)
+				(uninferredSentence (wantsFood MyUser))
+				;; FINISH THIS HORN CLAUSE - WANT TO RETURN ALL ACTIVITIES
+				)
 
 
 ;;; Main Query

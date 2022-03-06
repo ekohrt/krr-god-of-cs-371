@@ -46,6 +46,30 @@
 (comment userCurrentTime
   "Current Time of Day")
 
+(isa wantsServesFood Predicate)
+(arity wantsServesFood 1)
+(arg1Isa wantsServesFood User)
+(comment wantsServesFood
+  "Wants servesFood")
+
+(isa wantsServesCaffeine Predicate)
+(arity wantsServesCaffeine 1)
+(arg1Isa wantsServesCaffeine User)
+(comment wantsServesCaffeine
+  "Wants servesCaffeine")
+
+(isa wantsServesAlcohol Predicate)
+(arity wantsServesAlcohol 1)
+(arg1Isa wantsServesAlcohol User)
+(comment wantsServesAlcohol
+  "Wants wantsServesAlcohol")
+
+(isa wantsShoppingPlace Predicate)
+(arity wantsShoppingPlace 1)
+(arg1Isa wantsShoppingPlace User)
+(comment wantsShoppingPlace
+  "Wants wantsShoppingPlace")
+
 
 
 
@@ -61,4 +85,4 @@
 ;;; Type user's inputs here:
 (wantsIndoors MyUser)
 (wantsOffCampus MyUser)
-(userCurrentTime MyUser 1200)
+(userCurrentTime MyUser 1600)
