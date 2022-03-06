@@ -70,6 +70,10 @@
 (comment wantsShoppingPlace
   "Wants wantsShoppingPlace")
 
+(isa wantsStudySpot Predicate)
+(arity wantsStudySpot 1)
+(arg1Isa wantsStudySpot User)
+
 
 
 
