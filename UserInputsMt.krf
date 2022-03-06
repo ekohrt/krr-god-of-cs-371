@@ -5,7 +5,8 @@
 (comment UserInputsMt
   "UserInputsMt is a microtheory representing a hypothetical user's preferences about what 
   sort of things they want to do.")
-
+(genlMt UserInputsMt ReasoningRulesMt) ;;;not sure if necessary
+(genlMt UserInputsMt ActivitiesMt) ;;;not sure if necessary
 
 
 
@@ -48,10 +49,16 @@
 
 
 
-;;; Preferences of a specific user:
-;;; Type user's inputs here
-(isa MyUser User)
-(wantsOutdoors MyUser)
-(wantsOnCampus MyUser)
+;;; TODO: do we need a "wantsNeither" of "noPreference" for these properties? like if they don't care about on/off campus, etc?
+;;; bc right now, if user doesn't specify "wantsOutdoors" or "wantsIndoors" then nothing is returned.
 
-(userCurrentTime MyUser 2300)
+
+
+
+;;; --------------------------------------------
+;;; Preferences of a specific user.
+(isa MyUser User)
+;;; Type user's inputs here:
+;;;(wantsIndoors MyUser)
+;;;(wantsOffCampus MyUser)
+;;;(userCurrentTime MyUser 1200)

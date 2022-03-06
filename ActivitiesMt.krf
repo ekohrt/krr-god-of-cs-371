@@ -8,75 +8,110 @@
 ;;;(genlMt ReasoningRulesMt ActivitiesMt) ;;;not sure if necessary
 ;;;(genlMt ReasoningRulesMt UserInputsMt) ;;;not sure if necessary
 (genlMt ActivitiesMt ReasoningRulesMt) ;;;not sure if necessary
-(genlMt UserInputsMt ReasoningRulesMt) ;;;not sure if necessary
+(genlMt ActivitiesMt UserInputsMt)
 
 
 
 
+;;; -------------------------
+;;; EvanstonActivity Entity 
+;;; -------------------------
 
+(isa EvanstonActivity Collection) 
+(comment EvanstonActivity
+	"EvanstonActivity: a thing to do in Evanston.")
+
+;;; ---------------------------
 ;;; PREDICATES FOR ACTIVITIES
-
-(isa Activity Collection) 
-(comment Activity
-	"Activity: a thing to do in Evanston.")
+;;; ---------------------------
 
 (isa onCampus Predicate)
 (arity onCampus 1)
-(arg1Isa onCampus Activity)
+(arg1Isa onCampus EvanstonActivity)
 (comment onCampus
 	"On Campus: the statement (onCampus Starbucks) means that Starbucks is on campus")
 
-;;;(isa offCampus Predicate)
-;;;(arity offCampus 1)
-;;;(arg1Isa offCampus Activity)
-;;;(comment offCampus
-;;;	"Off Campus: the statement (offCampus BobsPizza) means that BobsPizza is off campus")
+(isa offCampus Predicate)
+(arity offCampus 1)
+(arg1Isa offCampus EvanstonActivity)
+(comment offCampus
+	"Off Campus: the statement (offCampus BobsPizza) means that BobsPizza is off campus")
 
 (isa indoors Predicate)
 (arity indoors 1)
-(arg1Isa indoors Activity)
+(arg1Isa indoors EvanstonActivity)
 (comment indoors
 	"Indoors: the statement (indoors Starbucks) means that Starbucks is indoors")
 
 (isa outdoors Predicate)
 (arity outdoors 1)
-(arg1Isa outdoors Activity)
+(arg1Isa outdoors EvanstonActivity)
 (comment outdoors
 	"Outdoors: the statement (outdoors WalkLakefill) means that the activity WalkLakefill is outdoors")
 
 (isa openTime Predicate)
 (arity openTime 2)
-(arg1Isa openTime Activity)
+(arg1Isa openTime EvanstonActivity)
 (arg2Isa openTime ScalarInterval)
 (comment openTime
 	"Open Time: the statement (openTime Starbucks 1300) means that Starbucks opens at 1300 hours (aka 1:00 pm)")
 
 (isa closeTime Predicate)
 (arity closeTime 2)
-(arg1Isa closeTime Activity)
+(arg1Isa closeTime EvanstonActivity)
 (arg2Isa closeTime ScalarInterval)
 (comment closeTime
 	"Close Time: the statement (closeTime Starbucks 2200) means that Starbucks closes at 2200 hours (aka 10:00 pm)")
 
 
+;;;TODO:
+;;; to add: idk... studySpot? involvesExercise? servesFood? servesCaffeine? distanceToCampus? takeOutFood? museum/historicSite?
+;;; servesAlcohol? cost? free? 
+
+(isa studySpot Predicate)
+(arity studySpot 1)
+(arg1Isa studySpot EvanstonActivity)
+(comment studySpot
+	"Study Spot")
+
+(isa involvesExercise Predicate)
+(arity involvesExercise 1)
+(arg1Isa involvesExercise EvanstonActivity)
+(comment involvesExercise
+	"Involves Exercise")
+
+(isa servesFood Predicate)
+(arity servesFood 1)
+(arg1Isa servesFood EvanstonActivity)
+(comment servesFood
+	"Serves Food")
+
+(isa servesCaffeine Predicate)
+(arity servesCaffeine 1)
+(arg1Isa servesCaffeine EvanstonActivity)
+(comment servesCaffeine
+	"Serves Caffeine")
 
 
 
 
 
+
+;;; ---------------------
 ;;; SPECIFIC ACTIVITIES
+;;; ---------------------
 
-(isa BobsPizza Activity)
+(isa BobsPizza EvanstonActivity)
 (comment BobsPizza
 	"Bob's Pizza")
 (indoors BobsPizza)
-;;;(offCampus BobsPizza)
+(offCampus BobsPizza)
 (openTime BobsPizza 1600) ;;; 4pm
 (closeTime BobsPizza 2400) ;;; 12am
 
 
 
-(isa Starbucks Activity)
+(isa Starbucks EvanstonActivity)
 (comment Starbucks
 	"Starbucks on campus")
 (indoors Starbucks)
@@ -86,17 +121,17 @@
 
 
 
-(isa WalkDawesPark Activity)
+(isa WalkDawesPark EvanstonActivity)
 (comment WalkDawesPark
 	"Take a walk in Dawes Park")
 (outdoors WalkDawesPark)
-;;;(offCampus WalkDawesPark)
+(offCampus WalkDawesPark)
 (openTime WalkDawesPark 600) ;;; 6am
 (closeTime WalkDawesPark 2200) ;;; 10pm
 
 
 
-(isa WalkLakefill Activity)
+(isa WalkLakefill EvanstonActivity)
 (comment WalkLakefill
 	"Take a walk at the NU Lakefill")
 (outdoors WalkLakefill)
@@ -105,19 +140,91 @@
 (closeTime WalkLakefill 2400) ;;; 12am
 
 
+;;; --------------------------
+;;; TODO: add more activities
+;;; --------------------------
 
+;;; ___Restaurants___
+;;; Joy Yee's
+;;; Bob’s Pizza
+;;; Koi
+;;; Reza
+;;; Shang’s Noodles
+;;; Noodles & Co
+;;; Stacked and Folded
+;;; Mt. Everest
+;;; Epic burger
+;;; Tomate
+;;; Soban Korea
+;;; Kocotable
+;;; Mod Pizza
 
+;;; ___Casual food___
+;;; Coldstone ice cream
+;;; Cinnabon
+;;; Insomnia
 
-;;; ------------------------------------
-;;; QUERY
-;;; ------------------------------------
-(isa thingToDo Predicate)
-(arity thingToDo 1)
-(arg1Isa thingToDo Activity)
-(comment thingToDo
-	"The statement (thingsToDo ?outputActivity) means that some activity is a good activity for the user based on their preferences.
-	Used as a query for finding all things a user wants to do given their inputs.")
+;;; ___Coffee Shops___
+;;; Coffee lab
+;;; Starbucks (on-campus: Norris Center)
+;;; Starbucks (off-campus: Sherman Ave)
+;;; Colectivo coffee
+;;; Cupitol
+;;; Peet’s
+;;; Newport
 
+;;; ___Boba shops___
+;;; Tealicious
+;;; Kung Fu Tea
+;;; Happy Lemon
 
+;;; ___Bars___
+;;; Bobs Pizza
+;;; Taco Diablo
+;;; Chilis
+;;; Sketchbook
+
+;;; ___Parks___
+;;; Lakefill (on-campus)
+;;; Dawes Park (just south of campus)
+;;; Firemen’s Park (on maple)
+
+;;; ___Beach___
+;;; Lighthouse Beach (north), visit Grosse Point Lighthouse
+;;; Clark St. Beach (south)
+;;; Lee St. Beach (south)
+
+;;; ___Trails___
+
+;;; ___Grocery stores___
+;;; Target
+;;; CVS
+;;; Whole Foods
+;;; D&Ds
+
+;;; ___Shopping___
+;;; Saville Flowers
+;;; Bookends & Beginnings
+
+;;; ___Gyms___
+;;; Crown Sports Pavilion
+;;; Blomquist Recreation Center
+;;; LA Fitness (Sherman Ave)
+
+;;; ___Libraries___
+;;; Mudd Library
+;;; Main Library
+;;; Evanston Public Library
+
+;;; ___Non-specific activities can do anywhere___
+;;; Biking
+;;; Walk
+
+;;; ___Misc.___
+;;; Bowling
+;;; Movie Theater (“Century 12 Theater”)
+;;; Stay home and get takeout
+;;; Block Museum
+;;; Bennison's Bakery
 
 
