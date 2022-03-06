@@ -44,6 +44,11 @@
 			  (wantsOffCampus MyUser)
 			  (offCampus ?a))
 
+(<== (correctLocation ?a)
+			  (uninferredSentence (wantsOffCampus MyUser))
+			  (uninferredSentence (wantsOnCampus MyUser))
+			  (isa ?a EvanstonActivity))	
+
 
 
 (isa correctIndoorOutdoor Predicate)
