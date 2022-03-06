@@ -66,6 +66,16 @@
 				(wantsOutdoors MyUser)
 				(outdoors ?a))
 ;;; ---------------------------------------------------------------------------------
+
+(isa correctStudySpot Predicate)
+(arity correctStudySpot 1)
+(arg1Isa correctStudySpot EvanstonActivity)
+
+(<== (correctStudySpot ?a)
+				(uninferredSentence (wantsStudySpot MyUser))
+				(is ?a EvanstonActivity))
+
+
 ;; Addresses servesFood
 
 (isa correctFoodPreference Predicate)
