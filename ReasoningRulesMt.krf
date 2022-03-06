@@ -5,20 +5,18 @@
 (comment ReasoningRulesMt
   "ReasoningRulesMt holds all the rules to get from user prefs to activity recommendations.")
 
-;;; see LogicalConnective in KB
+
+
 
 ;;; HORN CLAUSES
 
-
-
-;;; THIS STUFF WORKS: DO NOT TOUCH -------------------------------------------------
 (isa activityIsOpen Predicate)
 (arity activityIsOpen 1)
 (arg1Isa activityIsOpen EvanstonActivity)
 (comment activityIsOpen
 	"Activity Is Open: true if activity is open based on current time")
 
-;;; Returns all activities that are open, given userCurrentTime
+;;; Returns only activities that are open, given userCurrentTime
 (<== (activityIsOpen ?a)
 				(userCurrentTime MyUser ?currentTime)
 				(closeTime ?a ?closeTime)
@@ -45,7 +43,7 @@
 			  (offCampus ?a))
 
 (<== (correctLocation ?a)
-			  (uninferredSentence (wantsOffCampus MyUser))
+			  (uninferredSentence (wantsOffCampus MyUser))   ;;; if neither wantsOffCampus/wantsOnCampus is specified, return all Activities
 			  (uninferredSentence (wantsOnCampus MyUser))
 			  (isa ?a EvanstonActivity))	
 
@@ -65,15 +63,32 @@
 (<== (correctIndoorOutdoor ?a)
 				(wantsOutdoors MyUser)
 				(outdoors ?a))
-;;; ---------------------------------------------------------------------------------
+
+(<== (correctIndoorOutdoor ?a)
+			  (uninferredSentence (wantsIndoors MyUser))   ;;; if neither wantsIndoors/wantsOutdoors is specified, return all Activities
+			  (uninferredSentence (wantsOutdoors MyUser))
+			  (isa ?a EvanstonActivity))	
+
+
+
+
 
 (isa correctStudySpot Predicate)
 (arity correctStudySpot 1)
 (arg1Isa correctStudySpot EvanstonActivity)
+(comment correctStudySpot
+	"Correct Study Spot Preference")
 
 (<== (correctStudySpot ?a)
-				(uninferredSentence (wantsStudySpot MyUser))
-				(is ?a EvanstonActivity))
+				(wantsStudySpot MyUser)
+				(studySpot ?a))
+
+(<== (correctStudySpot ?a)
+				(uninferredSentence (wantsStudySpot MyUser)) ;;; if wantsStudySpot is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
+
+
+
 
 
 ;; Addresses servesFood
@@ -82,19 +97,80 @@
 (arity correctFoodPreference 1)
 (arg1Isa correctFoodPreference EvanstonActivity)
 (comment correctFoodPreference
-	"Correct Food Preference: if user specifies (wantsFood myUser) then return only activities that have (servesFood ?a), otherwise if user does not specify, then return all activities including ones that serve food")
+	"Correct Food Preference: if user specifies (wantsServesFood myUser) then return only activities that have (servesFood ?a), otherwise if user does not specify, then return all activities including ones that serve food")
 
 ;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctFoodPreference ?a)
-				(wantsFood MyUser)
+				(wantsServesFood MyUser)
 				(servesFood ?a))
 
 (<== (correctFoodPreference ?a)
-				(uninferredSentence (wantsFood MyUser))
-				;; FINISH THIS HORN CLAUSE - WANT TO RETURN ALL ACTIVITIES
-				)
+				(uninferredSentence (wantsServesFood MyUser)) ;;; if wantsServesFood is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
 
 
+
+
+;;;wantsServesCaffeine
+(isa correctCaffeinePreference Predicate)
+(arity correctCaffeinePreference 1)
+(arg1Isa correctCaffeinePreference EvanstonActivity)
+(comment correctCaffeinePreference
+	"Correct Caffeine Preference: if user specifies (correctCaffeinePreference myUser) then 
+	return only activities that have (servesCaffeine ?a), otherwise if user does not specify, 
+	then return all activities including ones that serve caffeine")
+
+;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
+(<== (correctCaffeinePreference ?a)
+				(wantsServesCaffeine MyUser)
+				(servesCaffeine ?a))
+
+(<== (correctCaffeinePreference ?a)
+				(uninferredSentence (wantsServesCaffeine MyUser)) ;;; if wantsServesCaffeine is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
+
+
+
+
+;;;wantsServesAlcohol
+(isa correctAlcoholPreference Predicate)
+(arity correctAlcoholPreference 1)
+(arg1Isa correctAlcoholPreference EvanstonActivity)
+(comment correctAlcoholPreference
+	"Correct Alcohol Preference")
+
+;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
+(<== (correctAlcoholPreference ?a)
+				(wantsServesAlcohol MyUser)
+				(servesAlcohol ?a))
+
+(<== (correctAlcoholPreference ?a)
+				(uninferredSentence (wantsServesAlcohol MyUser)) ;;; if wantsServesAlcohol is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
+
+
+
+
+;;;wantsShoppingPlace
+(isa correctShoppingPreference Predicate)
+(arity correctShoppingPreference 1)
+(arg1Isa correctShoppingPreference EvanstonActivity)
+(comment correctShoppingPreference
+	"Correct Shopping Preference")
+
+;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
+(<== (correctShoppingPreference ?a)
+				(wantsShoppingPlace MyUser)
+				(shoppingPlace ?a))
+
+(<== (correctShoppingPreference ?a)
+				(uninferredSentence (wantsShoppingPlace MyUser)) ;;; if wantsShoppingPlace is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
+
+
+
+
+;;;-----------------------------------------------------------------
 ;;; Main Query
 (isa thingToDo Predicate)
 (arity thingToDo 1)
@@ -106,4 +182,9 @@
 (<== (thingToDo ?a) 
 				(activityIsOpen ?a)
 				(correctLocation ?a)
-				(correctIndoorOutdoor ?a))
+				(correctIndoorOutdoor ?a)
+				(correctStudySpot ?a)
+				(correctFoodPreference ?a)
+				(correctCaffeinePreference ?a)
+				(correctAlcoholPreference ?a)
+				(correctShoppingPreference ?a))
