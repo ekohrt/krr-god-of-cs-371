@@ -7,6 +7,12 @@
 
 
 
+;;; --------------------
+;;; Example User
+(isa MyUser User)
+;;; --------------------
+
+
 
 ;;; HORN CLAUSES
 
@@ -55,7 +61,6 @@
 (comment correctIndoorOutdoor
 	"Correct Indoor/Outdoor: True if activity matches user's indoor/outdoor preference")
 
-;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctIndoorOutdoor ?a)
 				(wantsIndoors MyUser)
 				(indoors ?a))
@@ -99,7 +104,6 @@
 (comment correctFoodPreference
 	"Correct Food Preference: if user specifies (wantsServesFood myUser) then return only activities that have (servesFood ?a), otherwise if user does not specify, then return all activities including ones that serve food")
 
-;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctFoodPreference ?a)
 				(wantsServesFood MyUser)
 				(servesFood ?a))
@@ -120,7 +124,6 @@
 	return only activities that have (servesCaffeine ?a), otherwise if user does not specify, 
 	then return all activities including ones that serve caffeine")
 
-;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctCaffeinePreference ?a)
 				(wantsServesCaffeine MyUser)
 				(servesCaffeine ?a))
@@ -139,7 +142,6 @@
 (comment correctAlcoholPreference
 	"Correct Alcohol Preference")
 
-;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctAlcoholPreference ?a)
 				(wantsServesAlcohol MyUser)
 				(servesAlcohol ?a))
@@ -158,7 +160,6 @@
 (comment correctShoppingPreference
 	"Correct Shopping Preference")
 
-;;; Check if activity is in correct location (wantsOnCampus -> onCampus, wantsOffCampus -> offCampus)
 (<== (correctShoppingPreference ?a)
 				(wantsShoppingPlace MyUser)
 				(shoppingPlace ?a))
@@ -168,6 +169,22 @@
 				(isa ?a EvanstonActivity))
 
 
+
+
+;;;wantsExercise
+(isa correctExercisePreference Predicate)
+(arity correctExercisePreference 1)
+(arg1Isa correctExercisePreference EvanstonActivity)
+(comment correctExercisePreference
+	"Correct Exercise Preference")
+
+(<== (correctExercisePreference ?a)
+				(wantsExercise MyUser)
+				(involvesExercise ?a))
+
+(<== (correctExercisePreference ?a)
+				(uninferredSentence (wantsExercise MyUser)) ;;; if wantsExercise is unspecified, return all Activities
+				(isa ?a EvanstonActivity))
 
 
 ;;;-----------------------------------------------------------------
@@ -187,4 +204,5 @@
 				(correctFoodPreference ?a)
 				(correctCaffeinePreference ?a)
 				(correctAlcoholPreference ?a)
-				(correctShoppingPreference ?a))
+				(correctShoppingPreference ?a)
+				(correctExercisePreference ?a))

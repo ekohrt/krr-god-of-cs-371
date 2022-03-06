@@ -1,0 +1,31 @@
+;;;; -*-  Mode: LISP; Syntax: Common-Lisp; Base: 10                          -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(in-microtheory ExampleInputs1Mt)
+(comment ExampleInputs1Mt
+  "ExampleInputs1Mt is a microtheory representing hypothetical user #1's input preferences.")
+(genlMt ExampleInputs1Mt ReasoningRulesMt)
+(genlMt ExampleInputs1Mt ActivitiesMt)
+
+
+
+;;; __ALL PREDICATES__
+;;; wantsIndoors MyUser
+;;; wantsOutdoors MyUser
+;;; wantsOnCampus MyUser
+;;; wantsOffCampus MyUser
+;;; userCurrentTime MyUser <integerFrom0-2400>
+;;; wantsServesFood MyUser
+;;; wantsServesCaffeine MyUser
+;;; wantsServesAlcohol MyUser
+;;; wantsShoppingPlace MyUser
+;;; wantsStudySpot MyUser
+;;; wantsExercise MyUser
+
+
+;;; --------------------------------
+;;; Type user's inputs below:
+;;; --------------------------------
+(wantsStudySpot MyUser)
+(wantsOffCampus MyUser)
+(wantsServesCaffeine MyUser)
+(userCurrentTime MyUser 2000)

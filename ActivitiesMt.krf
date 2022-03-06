@@ -108,6 +108,9 @@
 
 
 
+
+
+
 ;;; ---------------------
 ;;; SPECIFIC ACTIVITIES
 ;;; ---------------------
@@ -204,6 +207,16 @@
 (servesCaffeine Tealicious)
 (studySpot Tealicious)
 
+(isa BrewBike EvanstonActivity)
+(comment BrewBike
+	"Go to BrewBike cafe in NU main library")
+(indoors BrewBike)
+(onCampus BrewBike)
+(openTime BrewBike 830)
+(closeTime BrewBike 2230)
+(servesCaffeine BrewBike)
+(studySpot BrewBike)
+
 (isa SketchbookBrewing EvanstonActivity)
 (comment SketchbookBrewing
 	"Get drinks at Sketchbook")
@@ -258,6 +271,9 @@
 (closeTime HomeTakeout 2400)
 (servesFood HomeTakeout)
 
+
+;;; ___Libraries___
+
 (isa MuddLibrary EvanstonActivity)
 (comment MuddLibrary
 	"Go to Mudd Library and study")
@@ -266,6 +282,199 @@
 (openTime MuddLibrary 0)
 (closeTime MuddLibrary 2400)
 (studySpot MuddLibrary)
+
+(isa NUMainLibrary EvanstonActivity)
+(comment NUMainLibrary
+	"Go to NU Main Library and study")
+(indoors NUMainLibrary)
+(onCampus NUMainLibrary)
+(openTime NUMainLibrary 800)
+(closeTime NUMainLibrary 2400)
+(studySpot NUMainLibrary)
+
+(isa EvanstonPublicLibrary EvanstonActivity)
+(comment EvanstonPublicLibrary
+	"Go to Evanston Public Library and study")
+(indoors EvanstonPublicLibrary)
+(offCampus EvanstonPublicLibrary)
+(openTime EvanstonPublicLibrary 1000)
+(closeTime EvanstonPublicLibrary 2000)
+(studySpot EvanstonPublicLibrary)
+
+
+;;; Newly Added Activities
+(isa Reza EvanstonActivity)
+(comment Reza 
+	"Eat at Reza’s Restaurant")
+(indoors Koi)
+(offCampus Koi)
+(openTime Reza 1100)
+(closeTime Reza 2100)
+(servesFood Reza)
+
+(isa Shangs EvanstonActivity)
+(comment Shangs
+	"Eat at Shang’s Noodles")
+(indoors Shangs)
+(offCampus Shangs)
+(openTime Shangs 1100)
+(closeTime Shangs 2045)
+(servesFood Shangs)
+
+(isa NoodlesCo EvanstonActivity)
+(comment NoodlesCo
+	"Eat at Noodles & Co")
+(indoors NoodlesCo)
+(offCampus NoodlesCo)
+(openTime NoodlesCo 1100)
+(closeTime NoodlesCo 2100)
+(servesFood NoodlesCo)
+
+(isa StackedFolded EvanstonActivity)
+(comment StackedFolded
+	"Eat at Stacked & Folded")
+(indoors StackedFolded)
+(offCampus StackedFolded)
+(openTime StackedFolded 1100)
+(closeTime StackedFolded 2000)
+(servesFood StackedFolded)
+
+(isa MtEverest EvanstonActivity)
+(comment MtEverest
+	"Eat at Mt. Everest")
+(indoors MtEverest)
+(offCampus MtEverest)
+(openTime MtEverest 1130)
+(closeTime MtEverest 2100)
+(servesFood MtEverest)
+
+(isa EpicBurger EvanstonActivity)
+(comment EpicBurger
+	"Get food from Epic Burger")
+(indoors EpicBurger)
+(offCampus EpicBurger)
+(openTime EpicBurger 1100)
+(closeTime EpicBurger 2100)
+(servesFood EpicBurger)
+
+(isa Tomate EvanstonActivity)
+(comment Tomate
+	"Get a burrito from Tomate")
+(offCampus Tomate)
+(openTime Tomate 1000)
+(closeTime Tomate 1800)
+(servesFood Tomate)
+(shoppingPlace Tomate)
+
+(isa Soban EvanstonActivity)
+(comment Soban
+	"Get tteokbokki from Soban Korea")
+(indoors Soban)
+(offCampus Soban)
+(openTime Soban 1200)
+(closeTime Soban 2100)
+(servesFood Soban)
+
+(isa Kocotable EvanstonActivity)
+(comment Kocotable
+	"Get sundubu jjigae from Koco Table")
+(indoors Kocotable)
+(offCampus Kocotable)
+(openTime Kocotable 1100)
+(closeTime Kocotable 2100)
+(servesFood Kocotable)
+
+(isa ModPizza EvanstonActivity)
+(comment ModPizza
+	"Get pizza from MOD Pizza")
+(indoors ModPizza)
+(onCampus ModPizza)
+(openTime ModPizza 1030)
+(closeTime ModPizza 2100)
+(servesFood ModPizza)
+
+(isa Cinnaholic EvanstonActivity)
+(comment Cinnaholic
+	"Get a cinnamon bun from Cinnaholic")
+(indoors Cinnaholic)
+(onCampus Cinnaholic)
+(openTime Cinnaholic 1000)
+(closeTime Cinnaholic 2000)
+(servesFood Cinnaholic)
+
+(isa InsomniaCookies EvanstonActivity)
+(comment InsomniaCookies
+	"Get a late night cookie from Insomnia Cookies")
+(indoors InsomniaCookies)
+(onCampus InsomniaCookies)
+(openTime InsomniaCookies 1200)
+(closeTime InsomniaCookies 2400)
+(servesFood InsomniaCookies)
+
+(isa StarbucksOffCampus EvanstonActivity)
+(comment StarbucksOffCampus
+	"Starbucks off campus")
+(indoors StarbucksOffCampus)
+(offCampus StarbucksOffCampus)
+(openTime StarbucksOffCampus 530)
+(closeTime StarbucksOffCampus 2100)
+(studySpot StarbucksOffCampus)
+(servesFood StarbucksOffCampus)
+(servesCaffeine StarbucksOffCampus)
+
+(isa Colectivo EvanstonActivity)
+(comment Colectivo
+	"Coffee and study at Colectivo")
+(indoors Colectivo)
+(offCampus Colectivo)
+(openTime Colectivo 630)
+(closeTime Colectivo 1800)
+(studySpot Colectivo)
+(servesCaffeine Colectivo)
+
+(isa Cupitol EvanstonActivity)
+(comment Cupitol
+	"Coffee and study at Cupitol Coffee & Eatery")
+(indoors Cupitol)
+(offCampus Cupitol)
+(openTime Cupitol 700)
+(closeTime Cupitol 1600)
+(studySpot Cupitol)
+(servesFood Cupitol)
+(servesCaffeine Cupitol)
+
+(isa Peets EvanstonActivity)
+(comment Peets
+	"Coffee and study at Peet’s Coffee")
+(indoors Peets)
+(offCampus Peets)
+(openTime Peets 600)
+(closeTime Peets 1730)
+(studySpot Peets)
+(servesCaffeine Peets)
+
+(isa Newport EvanstonActivity)
+(comment Newport
+	"Coffee and study at Newport Coffee House")
+(indoors Newport)
+(offCampus Newport)
+(openTime Newport 700)
+(closeTime Newport 1700)
+(studySpot Newport)
+(servesCaffeine Newport)
+
+(isa KungFuTea EvanstonActivity)
+(comment KungFuTea
+	"Get boba from Kung Fu Tea")
+(indoors KungFuTea)
+(offCampus KungFuTea)
+(openTime KungFuTea 1200)
+(closeTime KungFuTea 2200)
+(servesCaffeine KungFuTea)
+
+
+
+
 
 ;;; --------------------------
 ;;; TODO: add more activities
@@ -299,6 +508,7 @@
 ;;; Cupitol
 ;;; Peet’s
 ;;; Newport
+;;; BrewBike (NU main library)
 
 ;;; ___Boba shops___
 ;;; Tealicious

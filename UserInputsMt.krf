@@ -44,54 +44,40 @@
 (arg1Isa userCurrentTime User)
 (arg2Isa userCurrentTime ScalarInterval)
 (comment userCurrentTime
-  "Current Time of Day")
+  "Current Time of Day (a number between 0 and 2400")
 
 (isa wantsServesFood Predicate)
 (arity wantsServesFood 1)
 (arg1Isa wantsServesFood User)
 (comment wantsServesFood
-  "Wants servesFood")
+  "Wants a place that serves food")
 
 (isa wantsServesCaffeine Predicate)
 (arity wantsServesCaffeine 1)
 (arg1Isa wantsServesCaffeine User)
 (comment wantsServesCaffeine
-  "Wants servesCaffeine")
+  "Wants a place that serves Caffeine")
 
 (isa wantsServesAlcohol Predicate)
 (arity wantsServesAlcohol 1)
 (arg1Isa wantsServesAlcohol User)
 (comment wantsServesAlcohol
-  "Wants wantsServesAlcohol")
+  "Wants a place that serves Alcohol")
 
 (isa wantsShoppingPlace Predicate)
 (arity wantsShoppingPlace 1)
 (arg1Isa wantsShoppingPlace User)
 (comment wantsShoppingPlace
-  "Wants wantsShoppingPlace")
+  "Wants a Shopping Place")
 
 (isa wantsStudySpot Predicate)
 (arity wantsStudySpot 1)
 (arg1Isa wantsStudySpot User)
+(comment wantsStudySpot
+  "Wants a Study Spot")
 
-
-
-
-;;; TODO: do we need a "wantsNeither" of "noPreference" for these properties? like if they don't care about on/off campus, etc?
-;;; bc right now, if user doesn't specify "wantsOutdoors" or "wantsIndoors" then nothing is returned.
-
-
-
-
-;;; --------------------------------------------
-;;; Preferences of a specific user.
-(isa MyUser User)
-;;; Type user's inputs here:
-;;;(wantsIndoors MyUser)
-;;;(wantsOffCampus MyUser)
-(wantsStudySpot MyUser)
-(wantsIndoors MyUser)
-(wantsOffCampus MyUser)
-(wantsServesFood MyUser)
-(wantsServesCaffeine MyUser)
-(userCurrentTime MyUser 2000)
+(isa wantsExercise Predicate)
+(arity wantsExercise 1)
+(arg1Isa wantsExercise User)
+(comment wantsExercise
+  "Wants an activity that involves exercise")
